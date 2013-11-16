@@ -13,6 +13,7 @@ if 'recur' in form.keys():
         check = key.split('-')
         if len(check) > 1:
             dndinf.set(check[0], check[1], value=form[key].value)
+    dndinf.write(funcs.PATH_TO_DA_CONFIG)
 
 keys, conf_table = funcs.html_config(dndinf, 'displayAvailable')
 total_workers = dndinf.getint('Workers', 'total')
