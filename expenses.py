@@ -4,6 +4,10 @@ import ConfigParser
 import warnings 
 import random
 import sys
+import cgi, cgitb
+
+cgitb.enable()
+form = cgi.FieldStorage()
 
 PATH_TO_DA_CONFIG = 'villager_assignments'
 TYPE_DICT = {1:'fail', 2:'common',3:'common',4:'common',5:'common',6:'common',
@@ -68,7 +72,37 @@ def do_money(wks, days):
     
     expenses = tally_expenses(wks, days, dndinf)    
     gains = calculate_gains(info)
-    sys.stdout.write('expenses: ' + str(expenses) + '\n\n' + gains)
 
-    sys.exit(0)
+    return 'expenses: ' + str(expenses) + '\n\n' + gains
+
+wks = int(form['wks'].value)
+days = int(form['days'].value)
+
+the_money = do_money(wks, days)
+
+print 'Content-type: text/html\n\n'
+
+print '''
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>D&amp;D Expense Stuff, Holla</title>
+<link href="../favicon.ico" rel="shortcut icon" type="image/x-icon">
+<link rel="stylesheet" href="../css/o.css" type="text/css">
+</head>
+
+<header>
+  <h1>Expenses</h1>
+</header>
+
+<body>
+''' + the_money + '''
+</body>
+
+</html>
+
+'''
+
                      
