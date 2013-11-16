@@ -1,29 +1,29 @@
-
-[Costs] # per month
-comfort:           25
-employeepay:       19
-players:           6
-employees:         19
+[Assignments]
+guardspeople = 0
+foresters = 0
+miner = 0
+quarrypeople = 6
+fisherpeople = 3
+farmer = 0
+builders = 0
+lumberjackorjills = 0
 
 [Workers]
-total:             64
+total = 64
+
+[Costs]
+employeepay = 1.9
+employees = 19
+comfort = 25
+players = 6
 
 [Capacities]
-fisherpeople:      3
-farmer:            4       
-miner:             6                
-quarrypeople:      6
-foresters:         1 
-lumberjackorjills: 4 
-builders:          6 
-guardspeople:      4
+guardspeople = 4
+foresters = 1
+miner = 6
+quarrypeople = 6
+fisherpeople = 3
+farmer = 4
+builders = 6
+lumberjackorjills = 4
 
-[Assignments]
-fisherpeople:      0
-farmer:            0
-miner:             0
-quarrypeople:      0
-foresters:         0    
-lumberjackorjills: 0 
-builders:          0         
-guardspeople:      0

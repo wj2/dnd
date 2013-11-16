@@ -13,7 +13,7 @@ TYPE_DICT = {1:'fail', 2:'common',3:'common',4:'common',5:'common',6:'common',
 def dict_of_sect(parsage, sect):
     dictage = {}
     for opt in parsage.options(sect):
-        dictage[opt] = parsage.getint(sect, opt)
+        dictage[opt] = parsage.getfloat(sect, opt)
     
     return dictage
 
@@ -57,7 +57,7 @@ def roll_n_d_x(n, x):
 def calculate_gains(inf):
     cap_dict = dict_of_sect(inf, 'Capacities')
     alloc_dict = dict_of_sect(inf, 'Assignments')
-    max_work = inf.getint('Workers', 'total')
+    max_work = inf.getfloat('Workers', 'total')
     if max_work < sum(alloc_dict.values()):
         raise ValueError('too many workers allocated')
     elif max_work > sum(alloc_dict.values()):
@@ -73,6 +73,9 @@ def calculate_gains(inf):
     return gain_string
 
 def do_money(wks, days):
+    ## TODO ## store elapsed days in config, so we don't lose
+    # resource rolls (ie, add incomplete weeks to next time done
+    # via config
     info = holla_at_config(PATH_TO_DA_CONFIG)
     sect_names = ['Costs', 'Workers', 'Capacities', 'Assignments']
     dndinf = {}
