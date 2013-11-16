@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/local/bin/python
 
 import ConfigParser
 import warnings 
@@ -25,7 +25,6 @@ def dict_of_sect(parsage, sect):
 def holla_at_config(path):
     info = ConfigParser.ConfigParser()
     info.read(path)
-    print info.sections()
     
     return info    
 
@@ -60,7 +59,7 @@ def calculate_gains(inf):
             roll = roll_n_d_x(1, 20)
             result = TYPE_DICT[roll]
             gain_string += result + ' (' + str(roll) + '), '
-        gain_string += '\n'
+        gain_string += '<br>'
     return gain_string
 
 def do_money(wks, days):
@@ -73,7 +72,7 @@ def do_money(wks, days):
     expenses = tally_expenses(wks, days, dndinf)    
     gains = calculate_gains(info)
 
-    return 'expenses: ' + str(expenses) + '\n\n' + gains
+    return 'expenses: ' + str(expenses) + '<br><br>' + gains
 
 wks = int(form['wks'].value)
 days = int(form['days'].value)
